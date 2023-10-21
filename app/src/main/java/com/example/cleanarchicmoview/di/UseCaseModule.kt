@@ -8,6 +8,8 @@ import com.example.cleanarchicmoview.domain.use_case.home.GetPopularMovieUseCase
 import com.example.cleanarchicmoview.domain.use_case.home.GetPopularMoviesUseCaseImpl
 import com.example.cleanarchicmoview.domain.use_case.movie_detail.GetMovieDetailUseCase
 import com.example.cleanarchicmoview.domain.use_case.movie_detail.GetMovieDetailUseCaseImpl
+import com.example.cleanarchicmoview.domain.use_case.searchmovie.SearchMovieUseCase
+import com.example.cleanarchicmoview.domain.use_case.searchmovie.SearchMovieUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -41,4 +43,10 @@ abstract class UseCaseModule {
     abstract fun bindGetDetailMovieFavUseCase(
         getFavMovieDetaulUseCaseImpl : FavMovieDetailUseCaseImpl
     ) : FavMovieDetailUseCase
+
+    @Binds
+    @Singleton
+    abstract fun bindSearchMovieUseCase(
+        searchMovieUseCaseImpl: SearchMovieUseCaseImpl
+    ) : SearchMovieUseCase
 }

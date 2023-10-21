@@ -20,6 +20,7 @@ import com.example.cleanarchicmoview.common.utils.UiText
 import com.example.cleanarchicmoview.databinding.ActivityFhomeFragmentBinding
 import com.example.cleanarchicmoview.domain.models.Movie
 import com.example.cleanarchicmoview.presentation.movie_detail.MovieDetailActivity
+import com.example.cleanarchicmoview.presentation.searchmovie.SearchMovieActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -46,6 +47,7 @@ class FHomeFragment : Fragment() {
         setUpList()
         setupObservers()
         viewModel.getMovies(page)
+        setListener()
     }
 
 
@@ -95,6 +97,11 @@ class FHomeFragment : Fragment() {
         })
         binding.rvMovies.adapter = adapter
     }
+
+    private fun setListener() =
+        binding.cvSearch.setOnClickListener {
+            startActivity(SearchMovieActivity.createSimpleIntent(requireContext()))
+        }
 
     override fun onDestroyView() {
         super.onDestroyView()

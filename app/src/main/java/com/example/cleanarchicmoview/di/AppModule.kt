@@ -9,6 +9,7 @@ import com.example.cleanarchicmoview.BuildConfig
 import com.example.cleanarchicmoview.data.local.DatabaseConverters
 import com.example.cleanarchicmoview.data.local.MovieDao
 import com.example.cleanarchicmoview.data.local.MovieDatabase
+import com.example.cleanarchicmoview.data.local.MoviePopDao
 import com.example.cleanarchicmoview.data.services.localStorage.KeyValueStore
 import com.example.cleanarchicmoview.data.services.localStorage.SharedPreferencesKeyValueStore
 import com.example.cleanarchicmoview.data.utils.GsonParser
@@ -58,4 +59,8 @@ object AppModule {
     @Provides
     @Singleton
     fun provideMovieMapper(): MovieMapper = MovieMapper()
+
+    @Provides
+    @Singleton
+    fun provideMovDao(db: MovieDatabase) : MoviePopDao = db.movDao
 }

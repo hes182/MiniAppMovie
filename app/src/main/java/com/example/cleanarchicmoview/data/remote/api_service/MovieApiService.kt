@@ -2,6 +2,7 @@ package com.example.cleanarchicmoview.data.remote.api_service
 
 import com.example.cleanarchicmoview.data.remote.models.MovieDto
 import com.example.cleanarchicmoview.data.remote.models.response.PopularMovieListResponseDto
+import com.example.cleanarchicmoview.data.remote.models.response.SearchMovieResponsoDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -12,5 +13,8 @@ interface MovieApiService {
 
     @GET("movie/{id}")
     suspend fun getMovie(@Path("id") id: Long): MovieDto
+
+    @GET("search/movie")
+    suspend fun searchMovie(@Query("query") query: String) : SearchMovieResponsoDto
 
 }

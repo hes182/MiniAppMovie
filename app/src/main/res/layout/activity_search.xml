@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/steel_grey"
-    tools:context=".presentation.search.SearchActivity">
+    tools:context=".presentation.searchmovie.SearchMovieActivity">
 
     <ImageView
         android:id="@+id/ivBack"
@@ -74,7 +73,7 @@
                 android:maxLines="1"
                 android:minHeight="48dp"
                 android:scrollHorizontally="true"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textColorHint="@color/jumbo"
                 android:textSize="@dimen/text_18" />
         </LinearLayout>
@@ -85,28 +84,12 @@
         android:id="@+id/rvMovies"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cvSearch" />
 
-    <View
-        android:id="@+id/topSeparator"
-        android:layout_width="0dp"
-        android:layout_height="16dp"
-        android:background="@drawable/shape_gradient_top_separator"
-        app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
-        app:layout_constraintStart_toEndOf="@id/guidelineStart"
-        app:layout_constraintTop_toBottomOf="@id/cvSearch" />
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:background="@drawable/shape_gradient_bottom_separator"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
-        app:layout_constraintStart_toEndOf="@id/guidelineStart" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineStart"

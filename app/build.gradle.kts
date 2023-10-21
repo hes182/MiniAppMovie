@@ -1,10 +1,11 @@
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
     id ("kotlin-kapt")
-    id ("org.jlleitschuh.gradle.ktlint")
     id ("dagger.hilt.android.plugin")
+    alias(libs.plugins.application)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.ktlint)
+    alias((libs.plugins.kotlin))
 }
 
 android {
@@ -70,90 +71,81 @@ android {
 }
 
 dependencies {
-    val nav_version = "2.7.2"
-
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-    implementation("androidx.activity:activity-compose:1.7.2")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
+    implementation(libs.androidx.core)
+    implementation(libs.androidx.lifecycle)
+    implementation(libs.androidx.activity)
+    implementation(platform(libs.androidx.compose))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.material)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.livedata)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.junit)
+    androidTestImplementation(libs.androidx.test.espresso)
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-    implementation ("androidx.fragment:fragment-ktx:1.6.1")
+    implementation (libs.androidx.fragment)
 
     // Unit Testing
-    testImplementation ("junit:junit:4.13.2")
-    testImplementation ("org.mockito.kotlin:mockito-kotlin:4.1.0")
-    testImplementation ("com.google.truth:truth:1.1.3")
-    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+    testImplementation (libs.mockito)
+    testImplementation (libs.truth)
+    testImplementation (libs.coroutines.test)
 
     // Coroutines
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+    implementation (libs.coroutines.core)
+    implementation (libs.coroutines.android)
 
     // Coroutine Lifecycle Scopes
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation (libs.lifecycle.viewmodel)
+    implementation (libs.lifecycle.runtime)
 
     //Dagger - Hilt
-    implementation ("com.google.dagger:hilt-android:2.45")
-    kapt("com.google.dagger:hilt-android-compiler:2.45")
+    implementation (libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
     // Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
-    implementation("com.github.ihsanbal:LoggingInterceptor:3.1.0") {
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+    implementation (libs.okhttp)
+    implementation(libs.logininterceptor) {
         exclude(group="org.json",module = "json")
     }
 
     // Glide
-    implementation ("com.github.bumptech.glide:glide:4.14.2")
-    kapt("com.github.bumptech.glide:compiler:4.14.2")
+    implementation (libs.glide)
+    kapt(libs.glide.compiler)
 
     // Room
-    implementation ("androidx.room:room-runtime:2.5.2")
-    kapt("androidx.room:room-compiler:2.5.2")
-    implementation ("androidx.room:room-ktx:2.5.2")
+    implementation (libs.room.runtime)
+    kapt(libs.room.compiler)
+    implementation (libs.room.ktx)
 
 //     LeakCanary
-    debugImplementation ("com.squareup.leakcanary:leakcanary-android:2.10")
+    debugImplementation (libs.leakcanary)
 
 //     Chucker
-    debugImplementation ("com.github.chuckerteam.chucker:library:3.5.2")
-    releaseImplementation ("com.github.chuckerteam.chucker:library-no-op:3.5.2")
+    debugImplementation (libs.chucker.library)
+    releaseImplementation (libs.chucker.library.no)
 
     // Navigation
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.7.2")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.7.2")
+    implementation (libs.navigation.fragment.ktx)
+    implementation (libs.navigation.ui.ktx)
 
     // Java language implementation
-    implementation("androidx.navigation:navigation-fragment:$nav_version")
-    implementation("androidx.navigation:navigation-ui:$nav_version")
-
-    // Kotlin
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
 
     // Feature module Support
-    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+    implementation(libs.navigation.dynamic)
 
     // Testing Navigation
-    androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+    androidTestImplementation(libs.navigation.testing)
 
     // Jetpack Compose Integration
-    implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation(libs.navigation.compose)
 }
